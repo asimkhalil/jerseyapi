@@ -1,0 +1,91 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 1200994158,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CucumberTestStepsDef.setUp()"
+            }
+          }
+        ],
+        "line": 2,
+        "name": "client makes call to POST /createuser",
+        "description": "",
+        "id": "the-user-service-should-be-working;client-makes-call-to-post-/createuser",
+        "after": [
+          {
+            "result": {
+              "duration": 87714817,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CucumberTestStepsDef.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 868386916,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "the client calls /createuser",
+            "match": {
+              "location": "CucumberTestStepsDef.the_client_calls_createuser()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8019508,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "the user receives status code of 200",
+            "match": {
+              "arguments": [
+                {
+                  "val": "200",
+                  "offset": 33
+                }
+              ],
+              "location": "CucumberTestStepsDef.the_user_receives_status_code_of(int)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 24834616,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "the response should contain:",
+            "match": {
+              "location": "CucumberTestStepsDef.the_response_should_contain(String)"
+            },
+            "keyword": "And ",
+            "doc_string": {
+              "content_type": "",
+              "line": 6,
+              "value": "{\"first_name\":\"asim\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "name": "the user service should be working",
+    "description": "",
+    "id": "the-user-service-should-be-working",
+    "keyword": "Feature",
+    "uri": "gherkinapitest.feature"
+  }
+]
