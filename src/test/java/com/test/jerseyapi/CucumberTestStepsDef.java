@@ -24,6 +24,23 @@ import cucumber.api.java.en.When;
 
 public class CucumberTestStepsDef extends JerseyTest {
 
+	private String request = "{\r\n" + 
+			"	\"requestId\" : \"1234567abcd1234567\",\r\n" + 
+			"	\"args\" : {\r\n" + 
+			"		\"businessDate\" : \"2018-10-16\",\r\n" + 
+			"		\"proposedRates\" : [\r\n" + 
+			"			{\r\n" + 
+			"				\"commodityId\" : \"4229226\",\r\n" + 
+			"				\"productId\" : \"8229478\",\r\n" + 
+			"				\"tier\" : \"5\",\r\n" + 
+			"				\"proposedRate\" : \"194\",\r\n" + 
+			"				\"exchange\" : \"NFX\",\r\n" + 
+			"				\"proposedDate\" : \"2018-02-10\"\r\n" + 
+			"			}\r\n" + 
+			"		]\r\n" + 
+			"	}\r\n" + 
+			"}";
+	
 	Response response;
 
 	@Before
@@ -46,16 +63,16 @@ public class CucumberTestStepsDef extends JerseyTest {
 		return new ResourceConfig(User.class);
 	}
 
-	@When("^the client calls /createuser$")
-	public void the_client_calls_createuser() throws Throwable {
+	@When("^the client calls /resetrates/edit$")
+	public void the_client_calls_resetrates() throws Throwable {
 
 		WebTarget webTarget = getClient().target("http://localhost:8080/jerseyapi");
 
-		WebTarget userWebTarget = webTarget.path("/webapi/manageusers/createuser");
+		WebTarget userWebTarget = webTarget.path("/resetrates/edit");
 
-		Invocation.Builder invocationBuilder = userWebTarget.request(MediaType.APPLICATION_JSON);
-
-		response = invocationBuilder.post(Entity.json("{\"first_name\":\"asim\"}"));
+		Invocation.Builder invocationBuilder = userWebTarget.request(MediaType.TEXT_PLAIN);
+		
+		response = invocationBuilder.post(Entity.text(request));
 
 	}
 
