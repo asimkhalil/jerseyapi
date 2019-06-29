@@ -1,30 +1,9 @@
-Feature: the reset rates /edit service should be working
-	Scenario: client makes call to POST /resetrates/edit
-		When the client calls /resetrates/edit
-		Then the user receives status code of 200
-		And the response should contain:
-		"""
-		{
-			"requestId" : "1234567abcd1234567",
-			"args" : {
-				"businessDate" : "2018-10-16",
-				"proposedRates" : [
-					{
-						"commodityId" : "4229226",
-						"productId" : "8229478",
-						"tier" : "5",
-						"proposedRate" : "194",
-						"exchange" : "NFX",
-						"proposedDate" : "2018-02-10",
-						"editedBy" ": "null",
-						"editedTimestamp" : "2019-06-20",
-						"reviewedBy" : "null",
-						"reviewedTimestamp" : "null",
-						"key" : "8229478",
-						
-					}
-				]
-			}
-			"errors" : "null"
-		}
-		""" 
+Feature: Test the edit service response and file writing
+Scenario: Validate new proposed scan range edit service
+	Given User has sample request for proposed scan range edit service
+		When scan range edit service called via postman
+		Then the service call should be successful
+		And update record should be written to ScanRangeUpdate.txt & activePSIData.txt files
+		When scan range edit service called via postman with empty request body
+		Then the service call should be unsuccessful 
+		And update record should not be written to ScanRangeUpdate.txt & activePSIData.txt files

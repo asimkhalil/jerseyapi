@@ -1,6 +1,7 @@
 package com.test.jerseyapi.model;
 
 public class Response {
+	
 	private String response = "{\r\n" + 
 			"	\"requestId\" : \"1234567abcd1234567\",\r\n" + 
 			"	\"args\" : {\r\n" + 

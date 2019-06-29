@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 1232051739,
+              "duration": 1274491769,
               "status": "passed"
             },
             "match": {
@@ -15,30 +15,31 @@
           }
         ],
         "line": 2,
-        "name": "client makes call to POST /resetrates/edit",
+        "name": "Validate new proposed scan range edit service",
         "description": "",
-        "id": "the-reset-rates-/edit-service-should-be-working;client-makes-call-to-post-/resetrates/edit",
-        "after": [
-          {
-            "result": {
-              "duration": 79321079,
-              "status": "passed"
-            },
-            "match": {
-              "location": "CucumberTestStepsDef.tearDown()"
-            }
-          }
-        ],
+        "id": "test-the-edit-service-response-and-file-writing;validate-new-proposed-scan-range-edit-service",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 269566769,
+              "duration": 98209457,
               "status": "passed"
             },
             "line": 3,
-            "name": "the client calls /resetrates/edit",
+            "name": "User has sample request for proposed scan range edit service",
+            "match": {
+              "location": "CucumberTestStepsDef.user_has_sample_request_for_proposed_scan_range_edit_service()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 152559729,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "scan range edit service called via postman",
             "match": {
               "location": "CucumberTestStepsDef.the_client_calls_resetrates()"
             },
@@ -46,45 +47,68 @@
           },
           {
             "result": {
-              "duration": 5962029,
+              "duration": 121980,
               "status": "passed"
             },
-            "line": 4,
-            "name": "the user receives status code of 200",
+            "line": 5,
+            "name": "the service call should be successful",
             "match": {
-              "arguments": [
-                {
-                  "val": "200",
-                  "offset": 33
-                }
-              ],
-              "location": "CucumberTestStepsDef.the_user_receives_status_code_of(int)"
+              "location": "CucumberTestStepsDef.the_user_receives_status_code_of()"
             },
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 9430372,
-              "status": "passed"
+              "duration": 1933919,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.test.jerseyapi.CucumberTestStepsDef.update_record_should_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files(CucumberTestStepsDef.java:90)\r\n\tat ✽.And update record should be written to ScanRangeUpdate.txt \u0026 activePSIData.txt files(gherkinapitest.feature:6)\r\n",
+              "status": "failed"
             },
-            "line": 5,
-            "name": "the response should contain:",
+            "line": 6,
+            "name": "update record should be written to ScanRangeUpdate.txt \u0026 activePSIData.txt files",
             "match": {
-              "location": "CucumberTestStepsDef.the_response_should_contain(String)"
+              "location": "CucumberTestStepsDef.update_record_should_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files()"
             },
-            "keyword": "And ",
-            "doc_string": {
-              "content_type": "",
-              "line": 6,
-              "value": "{\r\n\t\"requestId\" : \"1234567abcd1234567\",\r\n\t\"args\" : {\r\n\t\t\"businessDate\" : \"2018-10-16\",\r\n\t\t\"proposedRates\" : [\r\n\t\t\t{\r\n\t\t\t\t\"commodityId\" : \"4229226\",\r\n\t\t\t\t\"productId\" : \"8229478\",\r\n\t\t\t\t\"tier\" : \"5\",\r\n\t\t\t\t\"proposedRate\" : \"194\",\r\n\t\t\t\t\"exchange\" : \"NFX\",\r\n\t\t\t\t\"proposedDate\" : \"2018-02-10\",\r\n\t\t\t\t\"editedBy\" \": \"null\",\r\n\t\t\t\t\"editedTimestamp\" : \"2019-06-20\",\r\n\t\t\t\t\"reviewedBy\" : \"null\",\r\n\t\t\t\t\"reviewedTimestamp\" : \"null\",\r\n\t\t\t\t\"key\" : \"8229478\",\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n\t\"errors\" : \"null\"\r\n}"
-            }
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "scan range edit service called via postman with empty request body",
+            "match": {
+              "location": "CucumberTestStepsDef.scan_range_edit_service_called_via_postman_with_empty_request_body()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "the service call should be unsuccessful",
+            "match": {
+              "location": "CucumberTestStepsDef.the_service_call_should_be_unsuccessful()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 9,
+            "name": "update record should not be written to ScanRangeUpdate.txt \u0026 activePSIData.txt files",
+            "match": {
+              "location": "CucumberTestStepsDef.update_record_should_not_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files()"
+            },
+            "keyword": "And "
           }
         ]
       }
     ],
-    "name": "the reset rates /edit service should be working",
+    "name": "Test the edit service response and file writing",
     "description": "",
-    "id": "the-reset-rates-/edit-service-should-be-working",
+    "id": "test-the-edit-service-response-and-file-writing",
     "keyword": "Feature",
     "uri": "gherkinapitest.feature"
   }

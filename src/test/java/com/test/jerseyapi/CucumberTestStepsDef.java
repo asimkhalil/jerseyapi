@@ -1,6 +1,13 @@
 package com.test.jerseyapi;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
@@ -14,33 +21,26 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 
-import com.test.jerseyapi.model.User;
+import com.test.jerseyapi.model.Request;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class CucumberTestStepsDef extends JerseyTest {
 
-	private String request = "{\r\n" + 
-			"	\"requestId\" : \"1234567abcd1234567\",\r\n" + 
-			"	\"args\" : {\r\n" + 
-			"		\"businessDate\" : \"2018-10-16\",\r\n" + 
-			"		\"proposedRates\" : [\r\n" + 
-			"			{\r\n" + 
-			"				\"commodityId\" : \"4229226\",\r\n" + 
-			"				\"productId\" : \"8229478\",\r\n" + 
-			"				\"tier\" : \"5\",\r\n" + 
-			"				\"proposedRate\" : \"194\",\r\n" + 
-			"				\"exchange\" : \"NFX\",\r\n" + 
-			"				\"proposedDate\" : \"2018-02-10\"\r\n" + 
-			"			}\r\n" + 
-			"		]\r\n" + 
-			"	}\r\n" + 
-			"}";
-	
+	private String ScanRangeUpdate = "ScanRangeUpdate.txt";
+
+	private String ActivePSIData = "ActivePSIData.txt";
+
+	private String request = "{\r\n" + "	\"requestId\" : \"1234567abcd1234567\",\r\n" + "	\"args\" : {\r\n"
+			+ "		\"businessDate\" : \"2018-10-16\",\r\n" + "		\"proposedRates\" : [\r\n" + "			{\r\n"
+			+ "				\"commodityId\" : \"4229226\",\r\n" + "				\"productId\" : \"8229478\",\r\n"
+			+ "				\"tier\" : \"5\",\r\n" + "				\"proposedRate\" : \"194\",\r\n"
+			+ "				\"exchange\" : \"NFX\",\r\n" + "				\"proposedDate\" : \"2018-02-10\"\r\n"
+			+ "			}\r\n" + "		]\r\n" + "	}\r\n" + "}";
+
 	Response response;
 
 	@Before
@@ -52,18 +52,18 @@ public class CucumberTestStepsDef extends JerseyTest {
 
 	}
 
-	@After
-	@Override
-	public void tearDown() throws Exception {
-		super.tearDown();
-	}
-
 	@Override
 	protected Application configure() {
-		return new ResourceConfig(User.class);
+		return new ResourceConfig(Request.class);
 	}
 
-	@When("^the client calls /resetrates/edit$")
+	@Given("^User has sample request for proposed scan range edit service$")
+	public void user_has_sample_request_for_proposed_scan_range_edit_service() throws Throwable {
+		Socket socket = new Socket("localhost", 8080);
+		assertTrue(socket.isConnected());
+	}
+
+	@When("^scan range edit service called via postman$")
 	public void the_client_calls_resetrates() throws Throwable {
 
 		WebTarget webTarget = getClient().target("http://localhost:8080/jerseyapi");
@@ -71,18 +71,52 @@ public class CucumberTestStepsDef extends JerseyTest {
 		WebTarget userWebTarget = webTarget.path("/resetrates/edit");
 
 		Invocation.Builder invocationBuilder = userWebTarget.request(MediaType.TEXT_PLAIN);
-		
+
 		response = invocationBuilder.post(Entity.text(request));
 
 	}
 
-	@Then("^the user receives status code of (\\d+)$")
-	public void the_user_receives_status_code_of(int arg1) throws Throwable {
+	@Then("^the service call should be successful$")
+	public void the_user_receives_status_code_of() throws Throwable {
 		assertEquals("Http Response should be 200 ", Status.OK.getStatusCode(), response.getStatus());
 	}
 
-	@And("^the response should contain:$")
-	public void the_response_should_contain(String body) throws Throwable {
-		assertEquals("The response should be " + body, body, response.readEntity(String.class));
+	@Then("^update record should be written to ScanRangeUpdate\\.txt & activePSIData\\.txt files$")
+	public void update_record_should_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files() throws Throwable {
+
+		File fileScanRangeUpdate = new File("E:\\" + ScanRangeUpdate);
+		File fileActivePSIData = new File("E:\\" + ActivePSIData);
+
+		assertTrue(fileScanRangeUpdate.exists());
+		assertTrue(fileActivePSIData.exists());
+		
+		Files.deleteIfExists(Paths.get("E:\\" + ScanRangeUpdate));
+		Files.deleteIfExists(Paths.get("E:\\" + ActivePSIData));
+
+	}
+	
+	@When("^scan range edit service called via postman with empty request body$")
+	public void scan_range_edit_service_called_via_postman_with_empty_request_body() throws Throwable {
+		WebTarget webTarget = getClient().target("http://localhost:8080/jerseyapi");
+
+		WebTarget userWebTarget = webTarget.path("/resetrates/edit");
+
+		Invocation.Builder invocationBuilder = userWebTarget.request(MediaType.TEXT_PLAIN);
+
+		response = invocationBuilder.post(Entity.text(""));
+	}
+
+	@Then("^the service call should be unsuccessful$")
+	public void the_service_call_should_be_unsuccessful() throws Throwable {
+		assertEquals("Http Response should be 400 ", Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+	}
+
+	@Then("^update record should not be written to ScanRangeUpdate\\.txt & activePSIData\\.txt files$")
+	public void update_record_should_not_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files() throws Throwable {
+		File fileScanRangeUpdate = new File("E:\\" + ScanRangeUpdate);
+		File fileActivePSIData = new File("E:\\" + ActivePSIData);
+
+		assertTrue(!fileScanRangeUpdate.exists());
+		assertTrue(!fileActivePSIData.exists());
 	}
 }
