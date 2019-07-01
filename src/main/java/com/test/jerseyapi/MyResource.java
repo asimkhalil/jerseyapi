@@ -1,6 +1,5 @@
 package com.test.jerseyapi;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -28,15 +27,7 @@ public class MyResource {
 			return Response.status(400).entity(badRequestResponse.getBytes()).build();
 		}
 		ObjectMapper mapper = new ObjectMapper();
-		writeFile("ScanRangeUpdate.txt");
-		writeFile("ActivePSIData.txt");
 		byte[] entity = mapper.writeValueAsBytes(new com.test.jerseyapi.model.Response().buildResponse());
 		return Response.status(200).entity(entity).build();
-	}
-
-	private void writeFile(String fileName) throws IOException {
-		FileWriter fw = new FileWriter("E:\\" + fileName);
-		fw.write(fileName);
-		fw.close();
 	}
 }
