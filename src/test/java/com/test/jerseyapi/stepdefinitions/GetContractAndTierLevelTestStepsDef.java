@@ -1,4 +1,4 @@
-package com.test.jerseyapi;
+package com.test.jerseyapi.stepdefinitions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,6 +18,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.Uri;
 import org.glassfish.jersey.test.JerseyTest;
 
+import com.test.jerseyapi.TestConfigurations;
 import com.test.jerseyapi.model.Request;
 
 import cucumber.api.java.Before;
