@@ -13,6 +13,10 @@ public class TestConfigurations {
 	private static final String FAIL_STATUS_CODE = "test.api.request.fail.status.code";
 	private static final String API_BASE_URL = "test.api.base.url";
 	private static final String API_METHOD_TO_TEST = "test.api.method";
+	
+	private static final String CONTRACT_LEVEL_PARAM_DATE = "test.api.get.contractlevel.param.date";
+	private static final String CONTRACT_LEVEL_PARAM_REQUEST_ID = "test.api.get.contractlevel.param.requestId";
+	private static final String CONTRACT_LEVEL_METHOD = "test.api.get.contractlevel.method";
 
 	private String serverHost;
 
@@ -27,6 +31,12 @@ public class TestConfigurations {
 	private String apiBaseUrl;
 	
 	private String apiMethodURL;
+	
+	private String contractLevelParamDate;
+	
+	private String contractlevelParamRequestId;
+	
+	private String contractLevelMethod;
 
 	public void load() throws IOException {
 		Properties props = new Properties();
@@ -41,6 +51,11 @@ public class TestConfigurations {
 		this.failStatusCode = Integer.parseInt(props.getProperty(FAIL_STATUS_CODE));
 		this.apiBaseUrl = props.getProperty(API_BASE_URL);
 		this.apiMethodURL = props.getProperty(API_METHOD_TO_TEST);
+		
+		//Contract Level
+		this.contractLevelMethod = props.getProperty(CONTRACT_LEVEL_METHOD);
+		this.contractLevelParamDate = props.getProperty(CONTRACT_LEVEL_PARAM_DATE);
+		this.contractlevelParamRequestId = props.getProperty(CONTRACT_LEVEL_PARAM_REQUEST_ID);
 	}
 
 	public String getServerHost() {
@@ -69,5 +84,17 @@ public class TestConfigurations {
 
 	public String getApiMethodURL() {
 		return apiMethodURL;
+	}
+
+	public String getContractLevelParamDate() {
+		return contractLevelParamDate;
+	}
+
+	public String getContractlevelParamRequestId() {
+		return contractlevelParamRequestId;
+	}
+
+	public String getContractLevelMethod() {
+		return contractLevelMethod;
 	}
 }
