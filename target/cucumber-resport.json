@@ -1,0 +1,99 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 757166730,
+              "status": "passed"
+            },
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.setUp()"
+            }
+          }
+        ],
+        "line": 3,
+        "name": "Validate get and contract tier services returns the response",
+        "description": "",
+        "id": "test-the-get-contract-/-tier-services;validate-get-and-contract-tier-services-returns-the-response",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 77917326,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "User has sample request for get contract service",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.user_has_sample_request_for_get_contract_service()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 301734386,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "get contract edit service called via postman",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.get_contract_edit_service_called_via_postman()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 62594,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the get contract service call should be successful",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.get_contract_receives_status_code_of_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 4509543,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "get contract service called via postman no params",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.get_contract_service_called_via_postman_no_params()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 28376,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the service call should be unsuccessful",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.the_service_call_should_be_unsuccessful()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Test the get contract / tier services",
+    "description": "",
+    "id": "test-the-get-contract-/-tier-services",
+    "keyword": "Feature",
+    "uri": "GetContractAndTier.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@GetContractAndTier"
+      }
+    ]
+  }
+]

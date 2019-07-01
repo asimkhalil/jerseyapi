@@ -58,13 +58,11 @@ public class GetContractAndTierLevelTestStepsDef extends JerseyTest {
 
 		WebTarget webTarget = getClient().target(testConfigurations.getApiBaseUrl());
 
-		URI uri = UriBuilder.fromUri(testConfigurations.getContractLevelMethod())
+		webTarget = webTarget.path(testConfigurations.getContractLevelMethod())
 				.queryParam("date", testConfigurations.getContractLevelParamDate())
-				.queryParam("requestId", testConfigurations.getContractlevelParamRequestId()).build();
+				.queryParam("requestId", testConfigurations.getContractlevelParamRequestId());
 
-		WebTarget userWebTarget = webTarget.path(uri.toString());
-
-		Invocation.Builder invocationBuilder = userWebTarget.request(MediaType.TEXT_PLAIN);
+		Invocation.Builder invocationBuilder = webTarget.request(MediaType.TEXT_PLAIN);
 
 		response = invocationBuilder.get();
 	}
@@ -72,5 +70,22 @@ public class GetContractAndTierLevelTestStepsDef extends JerseyTest {
 	@Then("^the get contract service call should be successful$")
 	public void get_contract_receives_status_code_of_200() throws Throwable {
 		assertEquals("Http Response should be 200 ", testConfigurations.getSuccessStatusCode(), response.getStatus());
+	}
+	
+	@When("^get contract service called via postman no params$")
+	public void get_contract_service_called_via_postman_no_params() throws Throwable {
+		WebTarget webTarget = getClient().target(testConfigurations.getApiBaseUrl());
+
+		webTarget = webTarget.path(testConfigurations.getContractLevelMethod())
+				.queryParam("date", testConfigurations.getContractLevelParamDate());
+
+		Invocation.Builder invocationBuilder = webTarget.request(MediaType.TEXT_PLAIN);
+
+		response = invocationBuilder.get();
+	}
+
+	@Then("^the service call should be unsuccessful$")
+	public void the_service_call_should_be_unsuccessful() throws Throwable {
+		assertEquals("Http Response should be 400 ", testConfigurations.getFailStatusCode(), response.getStatus());
 	}
 }

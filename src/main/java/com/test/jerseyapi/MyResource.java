@@ -39,7 +39,7 @@ public class MyResource {
 	@Path("/contract")
 	public Response getResetRatesAtContractLevel(@QueryParam("date") String date,
 			@QueryParam("requestId") String requestId) throws IOException {
-		if(requestId == null) {
+		if (requestId == null) {
 			String badRequestResponse = "Query param requestId missing";
 			return Response.status(400).entity(badRequestResponse.getBytes()).build();
 		}
