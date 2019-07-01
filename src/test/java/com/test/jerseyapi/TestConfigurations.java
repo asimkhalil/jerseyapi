@@ -11,6 +11,8 @@ public class TestConfigurations {
 	private static final String REQUEST_BODY = "test.api.request.body";
 	private static final String SUCCESS_STATUS_CODE = "test.api.request.success.status.code";
 	private static final String FAIL_STATUS_CODE = "test.api.request.fail.status.code";
+	private static final String API_BASE_URL = "test.api.base.url";
+	private static final String API_METHOD_TO_TEST = "test.api.method";
 
 	private String serverHost;
 
@@ -21,6 +23,10 @@ public class TestConfigurations {
 	private int successStatusCode;
 
 	private int failStatusCode;
+	
+	private String apiBaseUrl;
+	
+	private String apiMethodURL;
 
 	public void load() throws IOException {
 		Properties props = new Properties();
@@ -33,6 +39,8 @@ public class TestConfigurations {
 		this.requestBody = props.getProperty(REQUEST_BODY);
 		this.successStatusCode = Integer.parseInt(props.getProperty(SUCCESS_STATUS_CODE));
 		this.failStatusCode = Integer.parseInt(props.getProperty(FAIL_STATUS_CODE));
+		this.apiBaseUrl = props.getProperty(API_BASE_URL);
+		this.apiMethodURL = props.getProperty(API_METHOD_TO_TEST);
 	}
 
 	public String getServerHost() {
@@ -53,5 +61,13 @@ public class TestConfigurations {
 
 	public int getFailStatusCode() {
 		return failStatusCode;
+	}
+
+	public String getApiBaseUrl() {
+		return apiBaseUrl;
+	}
+
+	public String getApiMethodURL() {
+		return apiMethodURL;
 	}
 }
