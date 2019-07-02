@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 1429615917,
+              "duration": 7730860178,
               "status": "passed"
             },
             "match": {
@@ -18,12 +18,23 @@
         "name": "Validate get and contract tier services returns the response",
         "description": "",
         "id": "test-the-get-contract-/-tier-services;validate-get-and-contract-tier-services-returns-the-response",
+        "after": [
+          {
+            "result": {
+              "duration": 3784296826,
+              "status": "passed"
+            },
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.after()"
+            }
+          }
+        ],
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 140986353,
+              "duration": 108420078,
               "status": "passed"
             },
             "line": 4,
@@ -35,7 +46,7 @@
           },
           {
             "result": {
-              "duration": 458410848,
+              "duration": 164021100,
               "status": "passed"
             },
             "line": 5,
@@ -47,7 +58,7 @@
           },
           {
             "result": {
-              "duration": 95821,
+              "duration": 105098,
               "status": "passed"
             },
             "line": 6,
@@ -59,7 +70,7 @@
           },
           {
             "result": {
-              "duration": 4140794,
+              "duration": 5861339,
               "status": "passed"
             },
             "line": 7,
@@ -71,15 +82,131 @@
           },
           {
             "result": {
-              "duration": 25976,
+              "duration": 42831,
               "status": "passed"
             },
             "line": 8,
+            "name": "the contract service call should be unsuccessful",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.the_contract_service_call_should_be_unsuccessful()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 3774613293,
+              "status": "passed"
+            },
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.setUp()"
+            }
+          }
+        ],
+        "line": 10,
+        "name": "Validate new proposed scan range edit service",
+        "description": "",
+        "id": "test-the-get-contract-/-tier-services;validate-new-proposed-scan-range-edit-service",
+        "after": [
+          {
+            "result": {
+              "duration": 4298985887,
+              "status": "passed"
+            },
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.after()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 120016,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User has sample request for proposed scan range edit service",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.user_has_sample_request_for_proposed_scan_range_edit_service()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 53795354,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "scan range edit service called via postman",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.the_client_calls_resetrates()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 27366,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "the service call should be successful",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.the_user_receives_status_code_of()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 63649,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "update record should be written to ScanRangeUpdate.txt \u0026 activePSIData.txt files",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.update_record_should_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3345316,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "scan range edit service called via postman with empty request body",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.scan_range_edit_service_called_via_postman_with_empty_request_body()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 27416,
+              "status": "passed"
+            },
+            "line": 16,
             "name": "the service call should be unsuccessful",
             "match": {
               "location": "GetContractAndTierLevelTestStepsDef.the_service_call_should_be_unsuccessful()"
             },
             "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 76259,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "update record should not be written to ScanRangeUpdate.txt \u0026 activePSIData.txt files",
+            "match": {
+              "location": "GetContractAndTierLevelTestStepsDef.update_record_should_not_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files()"
+            },
+            "keyword": "And "
           }
         ]
       }
