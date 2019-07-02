@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="9" failures="0" name="com.test.jerseyapi.CucumberTest" time="10.387" errors="0" skipped="8">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_211\jre\bin"/>
+    <property name="java.vm.version" value="25.211-b12"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Projects\Kaleem Brohi\jerseyapi"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Projects\Kaleem Brohi\jerseyapi"/>
+    <property name="java.runtime.version" value="1.8.0_211-b12"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_211\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\User\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="E:\Projects\Kaleem Brohi\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6282781221045420455.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_211\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_211/bin/server;C:/Program Files/Java/jre1.8.0_211/bin;C:/Program Files/Java/jre1.8.0_211/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\User\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\eclipse-jee-2019-03-R-win32-x86_64 (1)\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\User"/>
+    <property name="user.timezone" value="Asia/Karachi"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="User"/>
+    <property name="java.class.path" value="C:\Program Files\eclipse-jee-2019-03-R-win32-x86_64 (1)\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.11.0.20190220-2117\jars\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_211\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_211"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_211\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_211\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_211\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_211\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_211\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_211\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_211\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_211\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_211\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\Projects\Kaleem Brohi\jerseyapi\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="Given User has sample request for proposed scan range edit service" time="1.152">
+    <skipped/>
+    <system-err>Jul 02, 2019 3:27:11 AM org.glassfish.jersey.test.grizzly.GrizzlyTestContainerFactory$GrizzlyTestContainer &lt;init&gt;
+INFO: Creating GrizzlyTestContainer configured at the base URI http://localhost:9998/
+Jul 02, 2019 3:27:11 AM org.glassfish.jersey.internal.inject.Providers checkProviderRuntime
+WARNING: A provider com.test.jerseyapi.model.Request registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider com.test.jerseyapi.model.Request will be ignored. 
+Jul 02, 2019 3:27:12 AM org.glassfish.grizzly.http.server.NetworkListener start
+INFO: Started listener bound to [localhost:9998]
+Jul 02, 2019 3:27:12 AM org.glassfish.grizzly.http.server.HttpServer start
+INFO: [HttpServer] Started.
+</system-err>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="When scan range edit service called via postman" time="1.153">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="Then the service call should be successful" time="1.153">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="And update record should be written to ScanRangeUpdate.txt &amp; activePSIData.txt files" time="1.153">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="When scan range edit service called via postman with empty request body" time="1.154">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="Then the service call should be unsuccessful" time="1.155">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="And update record should not be written to ScanRangeUpdate.txt &amp; activePSIData.txt files" time="1.155">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="Scenario: Validate new proposed scan range edit service" time="1.156">
+    <skipped/>
+  </testcase>
+  <testcase classname="Scenario: Validate new proposed scan range edit service" name="Scenario: Validate new proposed scan range edit service" time="1.156"/>
+</testsuite>
