@@ -3,48 +3,51 @@ package com.test.jerseyapi;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.jerseyapi.model.Response;
 
-@Path("/resetrates")
+@Service
+@RestController
+@RequestMapping("/resetrates")
 public class MyResource {
 
 	Logger logger = Logger.getLogger("MyResource");
 
-	@POST
-	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Path("/edit")
-	public Response editScanRange(String request) throws IOException {
-		if (request.isEmpty()) {
+	@PostMapping("/edit")
+	public Response editScanRange(@RequestBody(required=false) String request) throws IOException {
+		Response response;
+		if (request.equalsIgnoreCase("null")) {
 			String badRequestResponse = "Request body missing";
-			return Response.status(400).entity(badRequestResponse.getBytes()).build();
+			response = new Response();
+			response.setStatus(400);
+			response.setResponseBody(badRequestResponse);
+			return response;
 		}
-		ObjectMapper mapper = new ObjectMapper();
-		byte[] entity = mapper.writeValueAsBytes(new com.test.jerseyapi.model.Response().buildResponse());
-		return Response.status(200).entity(entity).build();
+		response = new Response();
+		response.setStatus(200);
+		return response;
 	}
 
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Path("/contract")
-	public Response getResetRatesAtContractLevel(@QueryParam("date") String date,
-			@QueryParam("requestId") String requestId) throws IOException {
+	@GetMapping("/contract")
+	public Response getResetRatesAtContractLevel(@RequestParam(required=false) String date,
+			@RequestParam(required=false) String requestId) throws IOException {
+		Response response;
 		if (requestId == null) {
 			String badRequestResponse = "Query param requestId missing";
-			return Response.status(400).entity(badRequestResponse.getBytes()).build();
+			response = new Response();
+			response.setStatus(400);
+			response.setResponseBody(badRequestResponse);
+			return response;
 		}
-		ObjectMapper mapper = new ObjectMapper();
-		byte[] entity = mapper.writeValueAsBytes(new com.test.jerseyapi.model.Response().buildResponse());
-		return Response.status(200).entity(entity).build();
+		response = new Response();
+		response.setStatus(200);
+		return response;
 	}
 }

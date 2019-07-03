@@ -2,7 +2,9 @@ package com.test.jerseyapi.model;
 
 public class Response {
 	
-	private String response = "{\r\n" + 
+	private int status;
+	
+	private String responseBody = "{\r\n" + 
 			"	\"requestId\" : \"1234567abcd1234567\",\r\n" + 
 			"	\"args\" : {\r\n" + 
 			"		\"businessDate\" : \"2018-10-16\",\r\n" + 
@@ -25,8 +27,20 @@ public class Response {
 			"	}\r\n" + 
 			"	\"errors\" : \"null\"\r\n" + 
 			"}";
-	
-	public String buildResponse() {
-		return response;
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getResponseBody() {
+		return responseBody;
+	}
+
+	public void setResponseBody(String responseBody) {
+		this.responseBody = responseBody;
 	}
 }
