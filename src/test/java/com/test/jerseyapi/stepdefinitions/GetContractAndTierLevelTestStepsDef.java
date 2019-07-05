@@ -8,9 +8,7 @@ import java.net.Socket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -43,7 +41,7 @@ public class GetContractAndTierLevelTestStepsDef {
 		assertTrue(socket.isConnected());
 	}
 
-	@When("^get contract edit service called via postman$")
+	@When("^get contract levels service called via postman$")
 	public void get_contract_edit_service_called_via_postman() throws Throwable {
 
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(testConfigurations.getApiBaseUrl()+testConfigurations.getContractLevelMethod())
@@ -64,7 +62,6 @@ public class GetContractAndTierLevelTestStepsDef {
 	
 	@When("^get contract service called via postman no params$")
 	public void get_contract_service_called_via_postman_no_params() throws Throwable {
-		HttpHeaders headers = new HttpHeaders();
 
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(testConfigurations.getApiBaseUrl()+testConfigurations.getContractLevelMethod())
 		        .queryParam("date", testConfigurations.getContractLevelParamDate());
@@ -108,9 +105,7 @@ public class GetContractAndTierLevelTestStepsDef {
 	
 	@And("^update record should be written to ScanRangeUpdate\\.txt & activePSIData\\.txt files$")
 	public void update_record_should_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files() throws Throwable {
-		
 		System.out.println("@And test case condition executed");
-
 	}
 
 	@When("^scan range edit service called via postman with empty request body$")
@@ -136,6 +131,17 @@ public class GetContractAndTierLevelTestStepsDef {
 	public void update_record_should_not_be_written_to_ScanRangeUpdate_txt_activePSIData_txt_files() throws Throwable {
 		System.out.print("@And Negative part executed");
 	}
+	
+	@Given("User has request for get contract service with no params")
+	public void user_has_request_for_get_contract_service_with_no_params() {
+		System.out.println("@Given calling get contract service with no params");
+	}
+	
+	@Given("User has empty request for proposed scan range edit service")
+	public void user_has_empty_request_for_proposed_scan_range_edit_service() {
+	    System.out.println("Calling edit scan range service with empty request body");
+	}
+
 	
 	@Bean
 	public RestTemplate restTemplate() {
