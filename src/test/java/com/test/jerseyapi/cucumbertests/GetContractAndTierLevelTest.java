@@ -9,4 +9,5 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(features = "src/main/resources", 
 glue = {"classpath:com.test.jerseyapi.stepdefinitions"})
 public class GetContractAndTierLevelTest {
+	
 }

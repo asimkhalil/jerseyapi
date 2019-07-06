@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.PropertySource;
+
+//@Configuration
+//@PropertySource("classpath:testconfig.properties")
 public class TestConfigurations {
 
 	private static final String SERVER_HOST = "server.host";
@@ -18,24 +23,34 @@ public class TestConfigurations {
 	private static final String CONTRACT_LEVEL_PARAM_REQUEST_ID = "test.api.get.contractlevel.param.requestId";
 	private static final String CONTRACT_LEVEL_METHOD = "test.api.get.contractlevel.method";
 
+//	@Value("${server.host}")
 	private String serverHost;
 
+//	@Value("${server.port}")
 	private int port;
 
+//	@Value("${test.api.request.body}")
 	private String requestBody;
 
+//	@Value("${test.api.request.success.status.code}")
 	private int successStatusCode;
 
+//	@Value("${test.api.request.fail.status.code}")
 	private int failStatusCode;
 	
+//	@Value("${test.api.base.url}")
 	private String apiBaseUrl;
 	
+//	@Value("${test.api.method}")
 	private String apiMethodURL;
 	
+//	@Value("${test.api.get.contractlevel.param.date}")
 	private String contractLevelParamDate;
 	
+//	@Value("${test.api.get.contractlevel.param.requestId}")
 	private String contractlevelParamRequestId;
 	
+//	@Value("${test.api.get.contractlevel.method}")
 	private String contractLevelMethod;
 
 	public void load() throws IOException {
@@ -57,7 +72,7 @@ public class TestConfigurations {
 		this.contractLevelParamDate = props.getProperty(CONTRACT_LEVEL_PARAM_DATE);
 		this.contractlevelParamRequestId = props.getProperty(CONTRACT_LEVEL_PARAM_REQUEST_ID);
 	}
-
+	
 	public String getServerHost() {
 		return serverHost;
 	}
