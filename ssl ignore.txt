@@ -1,0 +1,29 @@
+https://stackoverflow.com/questions/36672803/need-to-ignore-certificate-when-using-resttemplate
+
+https://pragmaticintegrator.wordpress.com/2017/08/13/small-hack-to-avoid-ssl-validation-in-spring-resttemplate/
+
+
+
+
+
+public GetContractAndTierLevelTestStepsDef()
+			throws IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		super();
+		AbstractApplicationContext context = new AnnotationConfigApplicationContext(TestConfigurations.class);
+		configs = (Configurations) context.getBean("configurations");
+		
+		TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
+
+		SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy)
+				.build();
+
+		SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+
+		CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
+
+		HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+
+		requestFactory.setHttpClient(httpClient);
+		
+		restTemplate = new RestTemplate(requestFactory);
+	}
