@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.net.Socket;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -138,6 +137,42 @@ public class GetContractAndTierLevelTestStepsDef {
 		System.out.println("Calling edit scan range service with empty request body");
 	}
 
+	@Given("User has sample request for get contract service with valid date params")
+	public void user_has_sample_request_for_get_contract_service_with_valid_date_params() {
+		System.out.println("@Given, get get reset rates for contract service called with valid date param");
+	}
+
+	@When("get contract levels service called via postman with correct date format MM\\/DD\\/YYYY")
+	public void get_contract_levels_service_called_via_postman_with_correct_date_format_MM_DD_YYYY() {
+		UriComponentsBuilder builder = UriComponentsBuilder
+				.fromHttpUrl(configs.getApiBaseUrl() + configs.getContractLevelMethod())
+				.queryParam("date", configs.getContractLevelParamDate())
+				.queryParam("requestId", configs.getContractlevelParamRequestId());
+
+		response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, null, Response.class);
+	}
+
+	@Then("the get contract service call should return the success response")
+	public void the_get_contract_service_call_should_return_the_success_response() {
+		assertEquals("Http Response should be 200 ", configs.getSuccessStatusCode(), response.getBody().getStatus());
+	}
+	
+	@Given("User has sample request for get contract service with valid request id params")
+	public void user_has_sample_request_for_get_contract_service_with_valid_request_id_params() {
+		System.out.println("@Given, get get reset rates for contract service called with valid request id param > 0");
+	    throw new cucumber.api.PendingException();
+	}
+
+	@When("get contract levels service called via postman with valid request id > {int}")
+	public void get_contract_levels_service_called_via_postman_with_valid_request_id(Integer int1) {
+		UriComponentsBuilder builder = UriComponentsBuilder
+				.fromHttpUrl(configs.getApiBaseUrl() + configs.getContractLevelMethod())
+				.queryParam("date", configs.getContractLevelParamDate())
+				.queryParam("requestId", configs.getContractlevelParamRequestId());
+
+		response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, null, Response.class);
+	}
+	
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();

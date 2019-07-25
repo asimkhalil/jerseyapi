@@ -20,3 +20,13 @@ Scenario: Validate new proposed scan range edit service with empty request body 
 		When scan range edit service called via postman with empty request body
 		Then the service call should be unsuccessful
 		And update record should not be written to ScanRangeUpdate.txt & activePSIData.txt files
+		
+Scenario: Validate get reset rates at contract level service with valid date param
+	Given User has sample request for get contract service with valid date params
+		When get contract levels service called via postman with correct date format MM/DD/YYYY
+		Then the get contract service call should return the success response
+		
+Scenario: Validate get reset rates at contract level service with valid request id param
+	Given User has sample request for get contract service with valid request id params
+		When get contract levels service called via postman with valid request id > 0
+		Then the get contract service call should return the success response
