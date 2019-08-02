@@ -1,16 +1,1 @@
-[
-  {
-    "line": 2,
-    "name": "Test the get contract / tier services",
-    "description": "",
-    "id": "test-the-get-contract-/-tier-services",
-    "keyword": "Feature",
-    "uri": "GetContractAndTier.feature",
-    "tags": [
-      {
-        "line": 1,
-        "name": "@GetContractAndTier"
-      }
-    ]
-  }
-]
+[]
